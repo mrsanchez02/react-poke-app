@@ -46,6 +46,33 @@ body{
   color: white;
 }
 
+.display{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .display img {
   width: 200px;
+}
+
+.display__loading{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: green;
+  color: white;
+  height: 3rem;
+}
+
+.display__error{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: red;
+  color: white;
+  height: 3rem;
 }

@@ -34,11 +34,15 @@ const useFetch = () => {
         type:res.data.types[0].type.name
       })
     })
-    .catch(err => console.error(err))
-    .finally(()=> setLoading(false));
+    .catch(err => {
+      setError(err);
+    })
+    .finally(()=> {
+      setLoading(false)
+    });
   }
 
-  return {data,loading,error, refetch,choosenPokemon}
+  return {data,loading,error, setError, refetch,choosenPokemon}
 }
 
 export default useFetch;

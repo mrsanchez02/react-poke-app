@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
+import { Pokemon } from './components/Pokemon';
 import useFetch from './hooks/useFetch';
 
 function App() {
 
   const [pokemon, setPokemon] = useState("");
-  const {loading,error, refetch,choosenPokemon} = useFetch();
+  const {loading,error,refetch,choosenPokemon} = useFetch();
 
   const handleChange = e => {
     const search = e.target.value
@@ -15,6 +16,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     refetch(pokemon)
+    setPokemon("");
   }
 
   return (
@@ -25,7 +27,8 @@ function App() {
           <input 
             onChange={e=>handleChange(e)}
             type='text' 
-            placeholder='Ex. Squirtle'
+            placeholder="Ex. 'Squirtle' or '7'"
+            value={pokemon}
             required
           />
           <button 
@@ -34,16 +37,16 @@ function App() {
         </form>
       </div>
       <div className='display'>
-        {loading?<h1>Please wait...</h1>
-        :choosenPokemon.name.length>0&&<>
-          <h1>{choosenPokemon.name.toUpperCase()}</h1>
-          <img src={choosenPokemon.img} alt='Pokemon Here!'/>
-          <p>Type: {choosenPokemon.type}</p>
-          <p>HP: {choosenPokemon.hp}</p>
-          <p>Attack: {choosenPokemon.attack}</p>
-          <p>Defense: {choosenPokemon.defense}</p>
-          <p>Speed: {choosenPokemon.speed}</p>
-        </>}
+        {loading&&<div className='display__loading'>
+          Loading, please wait...
+        </div>}
+        {error&&<div className='display__error'>
+          Sorry, Pokemon not found, try again your search...
+        </div>}
+        { choosenPokemon.name.length>0
+          ?<Pokemon poke={choosenPokemon}/>
+          :<p>Start your search...</p>
+        }
       </div>
     </div>
   );

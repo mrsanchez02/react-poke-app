@@ -1,0 +1,25 @@
+.pokemon__card{
+    margin-top: 1.5rem;
+    display: flex;
+    width: 24rem;
+    background: rgb(71, 181, 255);
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.pokemon__card .content{
+    width: 150px;
+    padding: 0 1rem;
+    border-left: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+
+.pokemon__card .content span{
+    font-weight: bolder;
+}
+
+.pokemon__card .content p{
+    display: flex;
+    justify-content: space-between;
+}
