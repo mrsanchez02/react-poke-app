@@ -33,6 +33,7 @@ const useFetch = () => {
         speed:res.data.stats[4].base_stat,
         type:res.data.types[0].type.name
       })
+      setError(false)
     })
     .catch(err => {
       setError(err);
