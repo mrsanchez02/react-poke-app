@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { Pokemon } from './components/Pokemon';
 import useFetch from './hooks/useFetch';
+import Nav from './components/layout/Nav';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className='App'>
+      <Nav />
       <div className="App__header">
         <h1>PokeSearch</h1>
         <form onSubmit={e=>handleSubmit(e)}>
